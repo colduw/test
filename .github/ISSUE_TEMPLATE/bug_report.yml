@@ -38,7 +38,7 @@ body:
     id: reproduction
     attributes:
       label: Steps to reproduce
-      description: A short and concise description that led to the bug
+      description: A short and concise description that led to the bug. Please [don't paste full on AI responses here.](https://dontbeameatproxy.com/)
       placeholder: | 
         I did [x]
         
