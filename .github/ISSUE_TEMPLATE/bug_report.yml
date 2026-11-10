@@ -40,7 +40,7 @@ body:
     id: reproduction
     attributes:
       label: Steps to reproduce
-      description: A short and concise description that led to the bug. Please [don't paste full on AI responses here.](https://dontbeameatproxy.com/)
+      description: "A short and concise description that led to the bug. Please [don't paste full on AI responses here.](https://dontbeameatproxy.com/)"
       placeholder: | 
         I did [x]
         
@@ -53,8 +53,17 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: Crash/Latest log files
+      label: Crash/Latest log file(s)
       description: |
         For a crash report, a crash log is almost always mandatory, you can upload it via github, or a link to https://mclo.gs
         
         If a bug report is submitted without a crash log, it may be closed early
+
+  - type: textarea
+    id: ctx
+    attributes:
+      label: Any additional context
+      description: |
+        Operating system, other mods, edited configuration files, anything that might have influenced the bug.
+
+        Additionally, screenshot(s), or video(s) of the bug
