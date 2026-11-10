@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose an idea that would improve the mod
+title: "[Feature Request]: "
+labels: ["feature"]
+assignees:
+  - colduw
+type: feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+
+        Before submitting, make sure to verify you are using the latest version. It may already be added.
+      
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: "What should change?"
+      placeholder: | 
+        Add [x]
+
+        Change [y]
+
+        Adjust [z]
+    validations:
+      required: true
