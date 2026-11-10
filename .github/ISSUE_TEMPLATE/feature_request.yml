@@ -1,7 +1,7 @@
 name: Feature request
 description: Propose an idea that would improve the mod
 title: "[Feature Request]: "
-labels: ["feature"]
+labels: ["enhancement"]
 assignees:
   - colduw
 type: feature
