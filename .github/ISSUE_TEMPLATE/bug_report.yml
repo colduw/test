@@ -22,10 +22,10 @@ body:
 
   - type: dropdown
     id: modloader
-    multiple: true
     attributes:
       label: Mod Loader
       description: The mod loader you experienced this bug on
+      multiple: true
       options:
         - NeoForge
         - Forge
