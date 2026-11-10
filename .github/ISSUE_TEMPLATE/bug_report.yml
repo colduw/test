@@ -24,7 +24,7 @@ body:
     id: modloader
     attributes:
       label: Mod Loader
-      description: The mod loader you experienced this bug on
+      description: The mod loader you experienced this bug on. Select all that apply
       multiple: true
       options:
         - NeoForge
