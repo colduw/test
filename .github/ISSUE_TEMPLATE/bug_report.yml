@@ -54,4 +54,5 @@ body:
       label: Crash/Latest log files
       description: |
         For a crash report, a crash log is almost always mandatory, you can upload it via github, or a link to https://mclo.gs
-        If a bug report is submitted without a crash log, it may be closed without explanation
+        
+        If a bug report is submitted without a crash log, it may be closed early
