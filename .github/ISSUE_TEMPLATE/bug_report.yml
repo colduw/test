@@ -15,7 +15,10 @@ body:
     id: version
     attributes:
       label: Version
-      description: The version of Cosmetic Armor Next that you experienced this bug on
+      description: | 
+        The version of Cosmetic Armor Next that you experienced this bug on.
+        
+        Before submitting, make sure to verify you are using the latest version. It may already be fixed.
       placeholder: v4
     validations:
       required: true
