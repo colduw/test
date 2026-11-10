@@ -39,22 +39,19 @@ body:
     attributes:
       label: Steps to reproduce
       description: A short and concise description that led to the bug
-      placeholder: I did [x], then [y], leading to [z]
+      placeholder: | 
+        I did [x]
+        
+        then [y]
+        
+        leading to [z]
     validations:
       required: true
     
-  - type: upload
+  - type: textarea
     id: logs
     attributes:
       label: Crash/Latest log files
       description: |
-        For a crash report, a crash log is a requirement, you can upload it via github, or a link to https://mclo.gs
-        If a bug report is submitted without a crash log, it may be closed without explanation
-
-  - type: textarea
-    id: logs2
-    attributes:
-      label: Crash/Latest log files
-      description: |
-        For a crash report, a crash log is a requirement, you can upload it via github, or a link to https://mclo.gs
+        For a crash report, a crash log is almost always mandatory, you can upload it via github, or a link to https://mclo.gs
         If a bug report is submitted without a crash log, it may be closed without explanation
