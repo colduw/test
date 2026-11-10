@@ -1,0 +1,59 @@
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - colduw
+type: bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report.
+        
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The version of Cosmetic Armor Next that you experienced this bug on
+      placeholder: v4
+    validations:
+      required: true
+
+  - type: dropdown
+    id: modloader
+    attributes:
+      label: Mod Loader
+      description: The mod loader you experienced this bug on
+      options:
+        - NeoForge
+        - Forge
+        - Fabric
+      default: 0
+    validations:
+      required: true
+      
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: A short and concise description that led to the bug
+      placeholder: I did [x], then [y], leading to [z]
+    validations:
+      required: true
+    
+  - type: upload
+    id: logs
+    attributes:
+      label: Crash/Latest log files
+      description: |
+        For a crash report, a crash log is a requirement, you can upload it via github, or a link to https://mclo.gs
+        If a bug report is submitted without a crash log, it may be closed without explanation
+
+  - type: textarea
+    id: logs2
+    attributes:
+      label: Crash/Latest log files
+      description: |
+        For a crash report, a crash log is a requirement, you can upload it via github, or a link to https://mclo.gs
+        If a bug report is submitted without a crash log, it may be closed without explanation
