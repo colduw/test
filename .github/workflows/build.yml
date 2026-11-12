@@ -64,7 +64,7 @@ jobs:
       with:
         tag_name: "${{ github.ref_name }}-fabric-${{ steps.get_version.outputs.fabricversion }}"
         name: "${{ github.ref_name }} ${{ steps.get_version.outputs.fabricversion }} Fabric"
-        target_commitish: ${{ github.sha }}
+        target_commitish: ${{ github.ref_name }}
         body_path: CHANGELOG.md
         draft: true
         prerelease: false
