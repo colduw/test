@@ -5,15 +5,12 @@ on:
     inputs:
       neoforge:
         description: "Build NeoForge"
-        required: true
         type: boolean
       forge:
         description: "Build Forge"
-        required: true
         type: boolean
       fabric:
         description: "Build Fabric"
-        required: true
         type: boolean
 
 jobs:
