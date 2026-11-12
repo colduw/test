@@ -23,7 +23,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v7
       with:
-        ref: "main"
+        ref: "1.21.6-neoforge"
     
     - name: Set up JDK 21
       uses: actions/setup-java@v6
