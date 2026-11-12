@@ -3,6 +3,10 @@ name: Java CI with Gradle
 on:
   workflow_dispatch:
     inputs:
+      modversion:
+        description: "Mod version"
+        type: string
+        required: true
       branch:
         description: "Branch to build against"
         type: choice
@@ -80,6 +84,7 @@ jobs:
       name: Build with Gradle Wrapper (NeoForge)
       run: ./gradlew :neoforge:build :neoforge:publishMods
       env:
+        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ steps.get_neoforge_version.outputs.version }}
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
     - if: ${{ inputs.neoforge }}
@@ -102,6 +107,7 @@ jobs:
       name: Build with Gradle Wrapper (Forge)
       run: ./gradlew :forge:build :forge:publishMods
       env:
+        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ steps.get_forge_version.outputs.version }}
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
     - if: ${{ inputs.forge }}
@@ -124,6 +130,7 @@ jobs:
       name: Build with Gradle Wrapper (Fabric)
       run: ./gradlew :fabric:build :fabric:publishMods
       env:
+        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ steps.get_fabric_version.outputs.version }}
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
     - if: ${{ inputs.fabric }}
