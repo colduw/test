@@ -41,24 +41,6 @@ jobs:
       uses: actions/checkout@v7
       with:
         ref: "mainfr"
-    
-    - if: ${{ inputs.neoforge }}
-      name: Get version from file (NeoForge)
-      id: get_neoforge_version
-      run: echo "version=$(head -n 1 'neoforge-VERSION')" >> $GITHUB_OUTPUT
-      shell: bash
-
-    - if: ${{ inputs.forge }}
-      name: Get version from file (Forge)
-      id: get_forge_version
-      run: echo "version=$(head -n 1 'forge-VERSION')" >> $GITHUB_OUTPUT
-      shell: bash
-
-    - if: ${{ inputs.fabric }}
-      name: Get version from file (Fabric)
-      id: get_fabric_version
-      run: echo "version=$(head -n 1 'fabric-VERSION')" >> $GITHUB_OUTPUT
-      shell: bash
 
     ######################################################################
 
