@@ -89,7 +89,7 @@ jobs:
     ##############################################################################################
 
     - if: ${{ inputs.forge }}
-      name: Build with Gradle Wrapper
+      name: Build with Gradle Wrapper (Forge)
       run: ./gradlew :forge:build
       env:
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
