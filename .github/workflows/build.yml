@@ -37,13 +37,6 @@ jobs:
       contents: write
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v7
-      with:
-        ref: "mainfr"
-
-    ######################################################################
-
     - name: Checkout to ${{ inputs.branch }}
       uses: actions/checkout@v7
       with:
@@ -76,7 +69,7 @@ jobs:
         tag_name: "${{ inputs.branch }}-neoforge-${{ inputs.modversion }}"
         name: "${{ inputs.branch }} ${{ inputs.modversion }} NeoForge Release"
         target_commitish: ${{ inputs.branch }}
-        body_path: CHANGELOG.md
+        body_path: ./neoforge/CHANGELOG.md
         draft: true
         prerelease: false
         files: |
@@ -89,17 +82,17 @@ jobs:
       name: Build with Gradle Wrapper (Forge)
       run: ./gradlew :forge:build :forge:publishMods
       env:
-        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ steps.get_forge_version.outputs.version }}
+        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ inputs.modversion }}
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
     - if: ${{ inputs.forge }}
       name: Upload built Jar (Forge)
       uses: softprops/action-gh-release@v3
       with:
-        tag_name: "${{ inputs.branch }}-forge-${{ steps.get_forge_version.outputs.version }}"
-        name: "${{ inputs.branch }} ${{ steps.get_forge_version.outputs.version }} Forge Release"
+        tag_name: "${{ inputs.branch }}-forge-${{ inputs.modversion }}"
+        name: "${{ inputs.branch }} ${{ inputs.modversion }} Forge Release"
         target_commitish: ${{ inputs.branch }}
-        body_path: CHANGELOG.md
+        body_path: ./forge/CHANGELOG.md
         draft: true
         prerelease: false
         files: |
@@ -112,17 +105,17 @@ jobs:
       name: Build with Gradle Wrapper (Fabric)
       run: ./gradlew :fabric:build :fabric:publishMods
       env:
-        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ steps.get_fabric_version.outputs.version }}
+        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ inputs.modversion }}
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
     - if: ${{ inputs.fabric }}
       name: Upload built Jar (Fabric)
       uses: softprops/action-gh-release@v3
       with:
-        tag_name: "${{ inputs.branch }}-fabric-${{ steps.get_fabric_version.outputs.version }}"
-        name: "${{ inputs.branch }} ${{ steps.get_fabric_version.outputs.version }} Fabric Release"
+        tag_name: "${{ inputs.branch }}-fabric-${{ inputs.modversion }}"
+        name: "${{ inputs.branch }} ${{ inputs.modversion }} Fabric Release"
         target_commitish: ${{ inputs.branch }}
-        body_path: CHANGELOG.md
+        body_path: ./fabric/CHANGELOG.md
         draft: true
         prerelease: false
         files: |
