@@ -76,9 +76,9 @@ jobs:
       name: Upload built Jar (NeoForge)
       uses: softprops/action-gh-release@v3
       with:
-        tag_name: "${{ github.ref_name }}-neoforge-${{ steps.get_neoforge_version.outputs.version }}"
-        name: "${{ github.ref_name }} ${{ steps.get_neoforge_version.outputs.version }} NeoForge Release"
-        target_commitish: ${{ github.ref_name }}
+        tag_name: "${{ inputs.branch }}-neoforge-${{ steps.get_neoforge_version.outputs.version }}"
+        name: "${{ inputs.branch }} ${{ steps.get_neoforge_version.outputs.version }} NeoForge Release"
+        target_commitish: ${{ inputs.branch }}
         body_path: CHANGELOG.md
         draft: true
         prerelease: false
@@ -98,9 +98,9 @@ jobs:
       name: Upload built Jar (Forge)
       uses: softprops/action-gh-release@v3
       with:
-        tag_name: "${{ github.ref_name }}-forge-${{ steps.get_forge_version.outputs.version }}"
-        name: "${{ github.ref_name }} ${{ steps.get_forge_version.outputs.version }} Forge Release"
-        target_commitish: ${{ github.ref_name }}
+        tag_name: "${{ inputs.branch }}-forge-${{ steps.get_forge_version.outputs.version }}"
+        name: "${{ inputs.branch }} ${{ steps.get_forge_version.outputs.version }} Forge Release"
+        target_commitish: ${{ inputs.branch }}
         body_path: CHANGELOG.md
         draft: true
         prerelease: false
@@ -120,9 +120,9 @@ jobs:
       name: Upload built Jar (Fabric)
       uses: softprops/action-gh-release@v3
       with:
-        tag_name: "${{ github.ref_name }}-fabric-${{ steps.get_fabric_version.outputs.version }}"
-        name: "${{ github.ref_name }} ${{ steps.get_fabric_version.outputs.version }} Fabric Release"
-        target_commitish: ${{ github.ref_name }}
+        tag_name: "${{ inputs.branch }}-fabric-${{ steps.get_fabric_version.outputs.version }}"
+        name: "${{ inputs.branch }} ${{ steps.get_fabric_version.outputs.version }} Fabric Release"
+        target_commitish: ${{ inputs.branch }}
         body_path: CHANGELOG.md
         draft: true
         prerelease: false
