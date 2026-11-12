@@ -1,0 +1,49 @@
+name: Java CI with Gradle
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+      with:
+        ref: "1.21.6-neoforge"
+    
+    - name: Set up JDK 21
+      uses: actions/setup-java@v6
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v6
+
+    - name: Build with Gradle Wrapper
+      run: ./gradlew build
+      env:
+        CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+
+    - name: Create Epoch Timestamp
+      id: epoch_timestamp
+      run: echo "timestamp=$(date +%s)" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: Upload built Jar
+      uses: softprops/action-gh-release@v3
+      with:
+        tag_name: "1.21.6-${{ steps.epoch_timestamp.outputs.timestamp }}"
+        name: "1.21.6 (Neo)Forge Release"
+        body_path: CHANGELOG.md
+        draft: true
+        prerelease: false
+        files: |
+          ./fabric/build/libs/*.jar
+          ./neoforge/build/libs/*.jar
+          ./forge/build/libs/*.jar
+        fail_on_unmatched_files: true
