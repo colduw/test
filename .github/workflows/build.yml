@@ -34,8 +34,21 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v6
 
-    - name: Build with Gradle Wrapper
-      run: ./gradlew build
+    - if: ${{ inputs.neoforge }}
+      name: Build with Gradle Wrapper
+      run: ./gradlew :neoforge:build
+      env:
+        CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+
+    - if: ${{ inputs.forge }}
+      name: Build with Gradle Wrapper
+      run: ./gradlew :forge:build
+      env:
+        CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+
+    - if: ${{ inputs.fabric }}
+      name: Build with Gradle Wrapper
+      run: ./gradlew :fabric:build
       env:
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
