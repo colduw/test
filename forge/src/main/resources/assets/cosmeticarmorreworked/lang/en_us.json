@@ -1,0 +1,14 @@
+{
+  "cos.key.opencosarmorinventory": "Open Cosmetic Armor Inventory",
+  "key.category.cosmeticarmorreworked.cos.key.category": "Cosmetic Armor Next",
+  "cos.gui.buttoncos": "Cosmetic Armor",
+  "cos.gui.buttonnormal": "Normal",
+  "cos.command.clearcosarmor.success.single": "Removed %s items in cosmetic armor inventory from player %s",
+  "cos.command.clearcosarmor.success.multiple": "Removed %s items in cosmetic armor inventory from %s players",
+  "cos.init.update.ahead": "This version of Cosmetic Armor Next (%s) is ahead of both the latest and the recommended versions.",
+  "cos.init.update.latest": "You have the latest version (%s) of Cosmetic Armor Next installed.",
+  "cos.init.update.recommended": "You have the recommended version of Cosmetic Armor Next installed, there is also a newer latest version available: %s.",
+  "cos.init.update.behindlatestaheadrecommended": "Your version of Cosmetic Armor Next (%s) is behind the latest, but ahead of the recommended (%s) version. [%s]",
+  "cos.init.update.behind": "Your version of Cosmetic Armor Next (%s) is outdated. (Latest: %s). [%s]",
+  "cos.init.update.error": "Could not check for a Cosmetic Armor Next update. (error: %s) [%s]"
+}

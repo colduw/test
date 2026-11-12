@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": ["${mod_authors}"],
+  "license": "${mod_license}",
+  "icon": "canvs.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["lain.mods.cos.init.fabric.FabricCosmeticArmorReworked"],
+    "client": ["lain.mods.cos.init.fabric.FabricCosmeticArmorReworkedClient"]
+  },
+  "custom": {
+    "updateJSONURL": "${updateURL}"
+  },
+  "mixins": [
+    "${mod_id}-mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": ">=${minecraft_version}",
+    "java": ">=21",
+    "fabric-api": "*",
+    "forgeconfigapiport": "*"
+  },
+  "accessWidener": "${mod_id}.classtweaker"
+}
