@@ -6,7 +6,7 @@ on:
       modloader:
         description: "Mod Loader Builds"
         required: true
-        type: choice
+        type: environment
         options:
           - NeoForge
           - Forge
