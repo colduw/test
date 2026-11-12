@@ -64,17 +64,17 @@ jobs:
 
     - if: ${{ inputs.neoforge }}
       name: Build with Gradle Wrapper (NeoForge)
-      run: ./gradlew :neoforge:build :neoforge:publishMods
+      run: ./gradlew :neoforge:build
       env:
-        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ steps.get_neoforge_version.outputs.version }}
+        ORG_GRADLE_PROJECT_mod_version: ${{ inputs.branch }}-${{ inputs.modversion }}
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
     - if: ${{ inputs.neoforge }}
       name: Upload built Jar (NeoForge)
       uses: softprops/action-gh-release@v3
       with:
-        tag_name: "${{ inputs.branch }}-neoforge-${{ steps.get_neoforge_version.outputs.version }}"
-        name: "${{ inputs.branch }} ${{ steps.get_neoforge_version.outputs.version }} NeoForge Release"
+        tag_name: "${{ inputs.branch }}-neoforge-${{ inputs.modversion }}"
+        name: "${{ inputs.branch }} ${{ inputs.modversion }} NeoForge Release"
         target_commitish: ${{ inputs.branch }}
         body_path: CHANGELOG.md
         draft: true
