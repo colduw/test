@@ -34,11 +34,35 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v6
 
+    ##############################################################################################
+
     - if: ${{ inputs.neoforge }}
-      name: Build with Gradle Wrapper
+      name: Build with Gradle Wrapper (NeoForge)
       run: ./gradlew :neoforge:build
       env:
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+
+    - if: ${{ inputs.neoforge }}
+      name: Get version from file (NeoForge)
+      id: get_neoforge_version
+      run: echo "version=$(head -n 1 'neoforge-VERSION')" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - if: ${{ inputs.neoforge }}
+      name: Upload built Jar (NeoForge)
+      uses: softprops/action-gh-release@v3
+      with:
+        tag_name: "${{ github.ref_name }}-neoforge-${{ steps.get_neoforge_version.outputs.version }}"
+        name: "${{ github.ref_name }} ${{ steps.get_neoforge_version.outputs.version }} NeoForge Release"
+        target_commitish: ${{ github.ref_name }}
+        body_path: CHANGELOG.md
+        draft: true
+        prerelease: false
+        files: |
+          ./neoforge/build/libs/*.jar
+        fail_on_unmatched_files: true
+
+    ##############################################################################################
 
     - if: ${{ inputs.forge }}
       name: Build with Gradle Wrapper
@@ -46,30 +70,50 @@ jobs:
       env:
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
+    - if: ${{ inputs.forge }}
+      name: Get version from file (Forge)
+      id: get_forge_version
+      run: echo "version=$(head -n 1 'forge-VERSION')" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - if: ${{ inputs.forge }}
+      name: Upload built Jar (Forge)
+      uses: softprops/action-gh-release@v3
+      with:
+        tag_name: "${{ github.ref_name }}-forge-${{ steps.get_forge_version.outputs.version }}"
+        name: "${{ github.ref_name }} ${{ steps.get_forge_version.outputs.version }} Forge Release"
+        target_commitish: ${{ github.ref_name }}
+        body_path: CHANGELOG.md
+        draft: true
+        prerelease: false
+        files: |
+          ./forge/build/libs/*.jar
+        fail_on_unmatched_files: true
+
+    ##############################################################################################
+
     - if: ${{ inputs.fabric }}
-      name: Build with Gradle Wrapper
+      name: Build with Gradle Wrapper (Fabric)
       run: ./gradlew :fabric:build
       env:
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
     - if: ${{ inputs.fabric }}
-      name: Get version from file
-      id: get_version
-      run: echo "fabricversion=$(head -n 1 'fabric/VERSION')" >> $GITHUB_OUTPUT
+      name: Get version from file (Fabric)
+      id: get_fabric_version
+      run: echo "version=$(head -n 1 'fabric-VERSION')" >> $GITHUB_OUTPUT
       shell: bash
 
     - if: ${{ inputs.fabric }}
-      name: Upload built Jar
+      name: Upload built Jar (Fabric)
       uses: softprops/action-gh-release@v3
       with:
-        tag_name: "${{ github.ref_name }}-fabric-${{ steps.get_version.outputs.fabricversion }}"
-        name: "${{ github.ref_name }} ${{ steps.get_version.outputs.fabricversion }} Fabric"
+        tag_name: "${{ github.ref_name }}-fabric-${{ steps.get_fabric_version.outputs.version }}"
+        name: "${{ github.ref_name }} ${{ steps.get_fabric_version.outputs.version }} Fabric Release"
         target_commitish: ${{ github.ref_name }}
         body_path: CHANGELOG.md
         draft: true
         prerelease: false
         files: |
           ./fabric/build/libs/*.jar
-          ./neoforge/build/libs/*.jar
-          ./forge/build/libs/*.jar
-        fail_on_unmatched_files: false
+        fail_on_unmatched_files: true
