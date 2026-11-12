@@ -52,16 +52,19 @@ jobs:
       env:
         CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
 
-    - name: Create Epoch Timestamp
-      id: epoch_timestamp
-      run: echo "timestamp=$(date +%s)" >> $GITHUB_OUTPUT
+    - if: ${{ inputs.fabric }}
+      name: Get version from file
+      id: get_version
+      run: echo "fabricversion=$(head -n 1 'fabric/VERSION')" >> $GITHUB_OUTPUT
       shell: bash
 
-    - name: Upload built Jar
+    - if: ${{ inputs.fabric }}
+      name: Upload built Jar
       uses: softprops/action-gh-release@v3
       with:
-        tag_name: "26.3-${{ steps.epoch_timestamp.outputs.timestamp }}"
-        name: "26.3 (Neo)Forge/Fabric Release"
+        tag_name: "${{ github.ref_name }}-fabric-${{ steps.get_version.outputs.fabricversion }}"
+        name: "${{ github.ref_name }} ${{ steps.get_version.outputs.fabricversion }} Fabric"
+        target_commitish: ${{ github.sha }}
         body_path: CHANGELOG.md
         draft: true
         prerelease: false
