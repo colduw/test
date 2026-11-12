@@ -3,14 +3,18 @@ name: Java CI with Gradle
 on:
   workflow_dispatch:
     inputs:
-      modloader:
-        description: "Mod Loader Builds"
+      neoforge:
+        description: "Build NeoForge"
         required: true
-        type: environment
-        options:
-          - NeoForge
-          - Forge
-          - Fabric
+        type: boolean
+      forge:
+        description: "Build Forge"
+        required: true
+        type: boolean
+      fabric:
+        description: "Build Fabric"
+        required: true
+        type: boolean
 
 jobs:
   build:
