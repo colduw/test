@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       branch:
+        description: "Branch to build against"
         type: choice
         required: true
         options:
